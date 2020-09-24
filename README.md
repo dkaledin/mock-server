@@ -15,8 +15,7 @@ $ yarn install
 ## Running the Server
 
 ```bash
-# development
 $ yarn start
 ```
 
-The Mock Server is using 3000 port
+The Mock Server is using 3000 port.
