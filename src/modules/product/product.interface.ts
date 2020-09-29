@@ -5,6 +5,8 @@ export interface IProduct {
     image: string;
     price: string;
     special: string;
+    priceInCents: number;
+    specialInCents: number;
     description: string;
     sizes: string[];
 }

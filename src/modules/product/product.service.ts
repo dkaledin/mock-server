@@ -11,7 +11,20 @@ export class ProductService {
 
     constructor() {
         const json = readFileSync(resolve('db', 'products.json'), { encoding: 'utf8' }).toString();
-        this.products = JSON.parse(json);
+        const products: any[] = JSON.parse(json);
+
+        this.products = products.map<IProduct>(product => ({
+            id: product.id,
+            model: product.model,
+            name: product.name,
+            image: product.image,
+            description: product.description,
+            sizes: product.sizes,
+            price: this.formatMoney(product.price),
+            special: this.formatMoney(product.special),
+            priceInCents: product.price,
+            specialInCents: product.special,
+        }));
     }
 
     public findAll(page = 1): IServerResponse<IProduct> {
@@ -32,5 +45,9 @@ export class ProductService {
             .reduce((_, product) => {
                 return product;
             }, {} as IProduct);
+    }
+
+    private formatMoney(valInCents: number) {
+        return '$' + (valInCents * 0.01).toFixed(2);
     }
 }
