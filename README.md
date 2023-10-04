@@ -19,3 +19,6 @@ $ yarn start
 ```
 
 The Mock Server is using 3000 port.
+
+## OpenAPI (Swagger)
+You can find **Swagger UI** here – `localhost:3000/api/`
